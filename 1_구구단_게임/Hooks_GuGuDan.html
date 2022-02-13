@@ -1,0 +1,41 @@
+const React = require('react');
+const { useState, useRef } = React;
+
+const GuGuDan = () => {
+    const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9))
+    const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9))
+    const [value, setValue] = React.useState('');
+    const [reault, setResult] = React.useState('');
+    const inputRef = React.useRef(); -> Hooks에서는 useRef 함수로 DOM에 접근
+
+    const onChangeInput = (e) => {
+        setValue(e.target.value);
+    };
+
+    const onSubmitForm = (e) => {
+            e.preventDefault();
+                if (parseInt(value) === first * second) {
+                setResult( prevState.first + ' X ' + prevState.second + ' 정답 : ' + prevState.value);
+                setFirst( Math.ceil(Math.random() * 9));
+                setSecond( Math.ceil(Math.random() * 9));       
+                setValue('');                
+                inputRef.current.focus();            
+                    
+                } else {
+                    setResult('틀렸습니다.');
+                    setRalue('');
+                    inputRef.current.focus();  
+                }
+        }
+
+    return (
+        <div>
+            <div> {first} 곱하기 {second} 는?</div>
+            <form onSubmit={onSubmitForm}>
+                <input ref={} onChange={onChangeInput} value={value} />
+                <button>입력</button>
+            </form>
+            <div id='result'>{result}</div>
+        </div>
+    );
+}
